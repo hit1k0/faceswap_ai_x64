@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Bundle version="1.0" xsi:schemaLocation="" xmlns="https://emsfs.autodesk.com/schema/manifest/1/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Identity>
+        <Publisher>Autodesk, Inc.</Publisher>
+        <DisplayName>Autodesk AutoCAD LT 2022 — Русский (Russian)</DisplayName>
+        <PLC>ACDLT</PLC>
+        <Release>2022</Release>
+        <BuildNumber>24.1.51.0</BuildNumber>
+        <UPI2>{272FEA31-0A3D-3383-B0A9-47B5DC081AEB}</UPI2>
+        <UpgradeCode>{B247DD16-416C-3A60-83C4-809C699A4894}</UpgradeCode>
+        <ConstantId>{A4A40AF5-7BDB-42CE-8FB0-3903B4215EB6}</ConstantId>
+        <Signature>4PaWM5ghHqqMzm9zIPEb63GbxrvpynMkBiUfFwreInc=</Signature>
+        <Type>PRD</Type>
+    </Identity>
+    <Resources>
+        <LocalizedResources>SetupRes/locale/%setuplang%/setup.xml</LocalizedResources>
+        <Images>
+            <Image id="ProductIconImage">SetupRes/icons/acadlt.svg</Image>
+            <Image id="ProductBrandImage">SetupRes/branding/acadlt.png</Image>
+            <Image id="ProductLogoImage">SetupRes/icons/acadlt.ico</Image>
+            <Image id="ProductARPIcon">SetupRes/icons/acadlt.ico</Image>
+        </Images>
+        <ThemeColor>#dd2222</ThemeColor>
+    </Resources>
+    <Configuration>
+        <Conditions>
+            <Condition messageId="AcadLTStillRunning" state="RUNNING"><![CDATA[(%ADSK_RUNNING_PROC_LIST% CONTAINS acadlt.exe)]]></Condition>
+            <Condition messageId="hasInstalled" state="INSTALLED"><![CDATA[((%ADSK_WIN_INSTALLED_MSI% CONTAINS {28B89EEF-5109-0419-2102-CF3F3A09B77D}) AND (NOT(%ACADLT_PRD_INSTALLED_VER% = 24.1.51.0)))]]></Condition>
+            <Condition messageId="xx" state="NOT_RECOMMENDED" type="SYSTEM_REQUIREMENT"><![CDATA[( %ADSK_MEMORY_RAM% < 4) ]]></Condition>
+            <Condition messageId="xx" state="NOT_APPLICABLE" type="SYSTEM_REQUIREMENT"><![CDATA[( %ADSK_MEMORY_RAM% < 2) ]]></Condition>
+            <Condition messageId="xx" state="NOT_APPLICABLE" type="SYSTEM_REQUIREMENT"><![CDATA[( %GRAPHICS_FEATURE_LEVEL% < 30 )]]></Condition>
+        </Conditions>
+        <Platforms>
+            <Platform name="Windows" architecture="x64" minVersion="6.1.7601" useNTVersion="true"/>
+        </Platforms>
+        <Languages>
+            <Language langId="ru-RU"></Language>
+            <Language langId="en-US"></Language>
+        </Languages>
+        <Properties>
+            <Property property="GRAPHICS_FEATURE_LEVEL">
+                <GraphicsCheck/>
+            </Property>
+            <Property property="ACADLT_PRD_INSTALLED_VER">
+                <MsiSearch name="VersionString" productCode="{28B89EEF-5109-0419-2102-CF3F3A09B77D}"/>
+            </Property>
+        </Properties>
+        <Media>
+            <Disk diskLabel="acadlt2022" diskPromptId="DiskPrompt" defaultDisk="true"></Disk>
+        </Media>
+    </Configuration>
+    <Settings>
+        <Setting name="ACAD_USE_ONLINE_CONTENT" defaultVal="#1" deployment="true" standalone="false"><![CDATA[]]></Setting>
+        <Setting name="ACAD_SUBSCRIPTIONCENTER_ENABLE" defaultVal="#1" deployment="true" standalone="false"><![CDATA[]]></Setting>
+        <Setting name="ACAD_ENABLE_SEND_PC_NAME" defaultVal="#1" deployment="true" standalone="false"><![CDATA[]]></Setting>
+        <Setting name="ACAD_ENABLE_ROUNDTRIP" defaultVal="#1" deployment="true" standalone="false"><![CDATA[]]></Setting>
+    </Settings>
+    <Applications>
+        <Application sequence="1" launchApp="false" installAs="core" name="AutoCAD LT 2022" external="false" path="manifest/app.acadlt.ru-RU.xml" upi2="{255DA8B7-4E83-3768-8C7E-90452EF95EA5}" upgradeCode="{581DA579-F506-34AE-918E-CEB3B417F50B}"/>
+        <Application sequence="2" installAs="optional" name="Autodesk Save to Web and Mobile" external="true" path="manifest/app.savetoweb.xml" upi2="{7C4BA7B9-4E31-7DE5-8149-4363196B59FE}" upgradeCode="{F45A0C4C-674B-C900-8F21-7A457A54D6C4}"/>
+        <Application sequence="3" installAs="optional" name="AutoCAD Open in Desktop" external="true" path="manifest/app.webfileopen.xml" upi2="{A5ED4F7F-9257-1964-1C6D-D8FE6DB945C2}" upgradeCode="{5326B369-E91E-DAE1-707E-29089D8F28E6}"/>
+        <Application sequence="4" installAs="optional" name="AutoCAD LT 2022: автономная справка" external="false" path="manifest/app.acadlthelp.ru-RU.xml" upi2="{8E3CC7EB-72DD-34ED-9FBE-2BF7BF91A5D4}" upgradeCode="{8C329E9C-4851-3663-B9A6-78D94FD23759}"/>
+    </Applications>
+</Bundle>
